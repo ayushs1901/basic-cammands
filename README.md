@@ -972,6 +972,258 @@ PythonOperator(...)
 
 task1 >> task2 >> task3 >> task4
 
+## 🔥 Git Commands You Actually Need for the Exam
+
+### 1. Check current status
+```bash
+git status
+```
+
+### 2. Add changes
+```bash
+git add .
+```
+Or specific file:
+```bash
+git add filename.py
+```
+
+### 3. Commit changes
+```bash
+git commit -m "Complete task"
+```
+
+### 4. Push to GitHub
+```bash
+git push
+```
+
+### 5. Pull latest changes
+```bash
+git pull
+```
+
+### 6. See commit history
+```bash
+git log --oneline
+```
+
+---
+
+## 🌿 Branch Commands
+
+### See branches
+```bash
+git branch
+```
+
+### Create + switch to new branch
+```bash
+git switch -c feature-name
+```
+
+### Switch branch
+```bash
+git switch main
+```
+
+### Merge a branch
+First go to the branch receiving changes:
+```bash
+git switch main
+```
+
+Then:
+```bash
+git merge feature-name
+```
+
+### Delete branch
+```bash
+git branch -d feature-name
+```
+
+---
+
+## 🔄 Most Important Exam Workflow
+
+After completing **every task**:
+
+```bash
+git status
+git add .
+git commit -m "Complete Q1"
+git push
+```
+
+Then start the next task.
+
+### Example
+
+```bash
+# Finish Q1
+git add q1_anomaly.py
+git commit -m "Complete Q1 anomaly detection"
+git push
+
+# Work on Q2
+git add topic.py producer.py
+git commit -m "Add Kafka topic and producer"
+git push
+```
+
+### 🧠 Remember this sequence
+
+**ADD → COMMIT → PUSH**
+
+```text
+git add .
+     ↓
+git commit -m "message"
+     ↓
+git push
+```
+
+For your exam, these are the **most important 10**:
+
+```bash
+git status
+git add .
+git add filename.py
+git commit -m "message"
+git push
+git pull
+git branch
+git switch main
+git switch -c branch-name
+git merge branch-name
+```## 🔥 Git Commands You Actually Need for the Exam
+
+### 1. Check current status
+```bash
+git status
+```
+
+### 2. Add changes
+```bash
+git add .
+```
+Or specific file:
+```bash
+git add filename.py
+```
+
+### 3. Commit changes
+```bash
+git commit -m "Complete task"
+```
+
+### 4. Push to GitHub
+```bash
+git push
+```
+
+### 5. Pull latest changes
+```bash
+git pull
+```
+
+### 6. See commit history
+```bash
+git log --oneline
+```
+
+---
+
+## 🌿 Branch Commands
+
+### See branches
+```bash
+git branch
+```
+
+### Create + switch to new branch
+```bash
+git switch -c feature-name
+```
+
+### Switch branch
+```bash
+git switch main
+```
+
+### Merge a branch
+First go to the branch receiving changes:
+```bash
+git switch main
+```
+
+Then:
+```bash
+git merge feature-name
+```
+
+### Delete branch
+```bash
+git branch -d feature-name
+```
+
+---
+
+## 🔄 Most Important Exam Workflow
+
+After completing **every task**:
+
+```bash
+git status
+git add .
+git commit -m "Complete Q1"
+git push
+```
+
+Then start the next task.
+
+### Example
+
+```bash
+# Finish Q1
+git add q1_anomaly.py
+git commit -m "Complete Q1 anomaly detection"
+git push
+
+# Work on Q2
+git add topic.py producer.py
+git commit -m "Add Kafka topic and producer"
+git push
+```
+
+### 🧠 Remember this sequence
+
+**ADD → COMMIT → PUSH**
+
+```text
+git add .
+     ↓
+git commit -m "message"
+     ↓
+git push
+```
+
+For your exam, these are the **most important 10**:
+
+```bash
+git status
+git add .
+git add filename.py
+git commit -m "message"
+git push
+git pull
+git branch
+git switch main
+git switch -c branch-name
+git merge branch-name
+```
+
 
 ========================================
 END OF CHEAT SHEET
