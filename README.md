@@ -1,976 +1,1064 @@
-# basic-cammands
+Yes. Based on **your teacher's instructions + the sample paper + the Kafka code your teacher gave you**, this is the command list I would learn tonight. The sample paper itself focuses on Python anomaly detection, Kafka topic/producer/consumer, Airflow DAG/PythonOperator/dependencies, and the integrated Kafka anomaly workflow. :chatgpt-content-reference{index="0"} :chatgpt-content-reference{index="1"} :chatgpt-content-reference{index="2"}
 
-========================================
-AIOPS EXAM — COMMAND CHEAT SHEET
-========================================
+# 🔴 AIOps Exam — Commands to Memorize
 
-1. PYTHON / ENVIRONMENT
-========================================
+Don't try to memorize every Linux command. There are **4 groups** you need.
 
-Check Python:
+---
+
+# 1. Python / Environment Commands
+
+### Check Python
+
+```bash
 python --version
+```
 
-Check Python 3:
+If that doesn't work:
+
+```bash
 python3 --version
+```
 
-Check pip:
+### Check pip
+
+```bash
+pip --version
+```
+
+or:
+
+```bash
 python -m pip --version
+```
 
-Create virtual environment:
+### Create virtual environment
+
+Know this:
+
+```bash
 python -m venv .venv
+```
 
-Activate environment (Linux / Codespaces):
+### Activate virtual environment — Linux/Codespaces
+
+```bash
 source .venv/bin/activate
+```
 
-Deactivate:
+You'll usually see:
+
+```text
+(.venv)
+```
+
+in the terminal.
+
+### Deactivate
+
+```bash
 deactivate
+```
 
-Install package:
-python -m pip install PACKAGE_NAME
+---
 
-Examples:
+# 2. Installing Packages
+
+Your teacher specifically said **install packages**, so know:
+
+```bash
 python -m pip install pandas
+```
+
+```bash
 python -m pip install matplotlib
+```
+
+```bash
 python -m pip install kafka-python
+```
 
-Install multiple:
+If you need multiple:
+
+```bash
 python -m pip install pandas matplotlib kafka-python
+```
 
-Show installed packages:
+### Check installed packages
+
+```bash
 pip list
+```
 
-Run Python file:
+### Verify a package
+
+```bash
+python -c "import pandas; print('pandas OK')"
+```
+
+```bash
+python -c "import matplotlib; print('matplotlib OK')"
+```
+
+```bash
+python -c "import kafka; print('kafka OK')"
+```
+
+### Run Python file
+
+```bash
 python filename.py
+```
 
 Examples:
+
+```bash
 python q1_anomaly.py
-python topic.py
+```
+
+```bash
 python producer.py
+```
+
+```bash
 python consumer.py
+```
 
-Test package:
-python -c "import pandas; print('pandas OK')"
-python -c "import matplotlib; print('matplotlib OK')"
-python -c "import kafka; print('kafka OK')"
+---
 
+# 3. Basic Terminal Commands
 
-========================================
-2. BASIC TERMINAL COMMANDS
-========================================
+These aren't AIOps-specific, but they can save you if you need to navigate the repository.
 
-Show current directory:
+### Where am I?
+
+```bash
 pwd
+```
 
-List files:
+### See files
+
+```bash
 ls
+```
 
-Enter folder:
+### Enter folder
+
+```bash
 cd folder_name
+```
 
-Go back:
+Example:
+
+```bash
+cd src
+```
+
+### Go back
+
+```bash
 cd ..
+```
 
-Create folder:
+### Create folder
+
+```bash
 mkdir folder_name
+```
 
-Create file:
+### Create file
+
+```bash
 touch filename.py
+```
 
-Clear terminal:
+Examples:
+
+```bash
+touch producer.py
+touch consumer.py
+```
+
+### Clear terminal
+
+```bash
 clear
+```
 
+---
 
-========================================
-3. GIT — VERY IMPORTANT
-========================================
+# 🔴 4. Git — VERY IMPORTANT
 
-Check changes:
+Your teacher specifically said:
+
+> commit every change in order to open the next step.
+
+So this is one of the most important sections.
+
+## Check status
+
+```bash
 git status
+```
 
-Add one file:
+This tells you what changed.
+
+---
+
+## Add a specific file
+
+```bash
 git add filename.py
+```
 
-Add all changes:
+Example:
+
+```bash
+git add producer.py
+```
+
+---
+
+## Add everything
+
+```bash
 git add .
+```
 
-Commit:
-git commit -m "message"
+This is probably what you'll use most.
 
-Push to GitHub:
+---
+
+## Commit
+
+```bash
+git commit -m "Complete Kafka producer"
+```
+
+The message can be anything meaningful.
+
+Examples:
+
+```bash
+git commit -m "Complete anomaly detection"
+```
+
+```bash
+git commit -m "Add Kafka consumer"
+```
+
+```bash
+git commit -m "Complete Airflow DAG"
+```
+
+---
+
+## Push
+
+```bash
 git push
+```
 
-Get latest changes:
+This sends your local commit to GitHub.
+
+---
+
+## Pull
+
+```bash
 git pull
+```
 
-See branches:
-git branch
+This gets the latest changes from GitHub.
 
-Create branch:
-git branch branch_name
+---
 
-Switch branch:
-git switch branch_name
+# 🔴 Your most important Git sequence
 
-Create + switch branch:
-git switch -c branch_name
+Memorize this:
 
-Alternative:
-git checkout branch_name
-
-Create + switch:
-git checkout -b branch_name
-
-Merge:
-git merge branch_name
-
-
-MOST IMPORTANT GIT WORKFLOW:
-
+```bash
 git status
 git add .
 git commit -m "Complete task"
 git push
+```
 
+Think:
 
-========================================
-4. GIT CONCEPTS
-========================================
+```text
+Check
+ ↓
+Add
+ ↓
+Commit
+ ↓
+Push
+```
 
-COMMIT
-= Save changes in Git history.
+---
 
-PUSH
-= Upload local commits to GitHub.
+# 5. Branch Commands
 
-PULL
-= Download latest changes from GitHub.
+Your teacher specifically mentioned branches.
 
-BRANCH
-= Separate line of development.
+### See branches
 
-MERGE
-= Combine one branch into another.
+```bash
+git branch
+```
 
-PULL REQUEST
-= Request to merge changes from one branch
-into another through GitHub.
+### Create a branch
 
-
-Typical workflow:
-
-Create branch
-      ↓
-Write code
-      ↓
-git add .
-      ↓
-git commit -m "message"
-      ↓
-git push
-      ↓
-Create Pull Request on GitHub
-
-
-========================================
-5. PYTHON — AIOPS
-========================================
-
-Import Pandas:
-import pandas as pd
-
-Import Matplotlib:
-import matplotlib.pyplot as plt
-
-Create DataFrame:
-df = pd.DataFrame(data)
-
-Number of records:
-len(df)
-
-First rows:
-df.head()
-
-Statistics:
-df.describe()
-
-Average:
-df["CPU"].mean()
-
-Maximum:
-df["CPU"].max()
-
-Minimum:
-df["CPU"].min()
-
-Filter:
-df[df["CPU"] > 80]
-
-Store anomalies:
-anomalies = df[df["CPU"] > 80]
-
-Count anomalies:
-len(anomalies)
-
-Print:
-print(anomalies)
-
-
-========================================
-6. MATPLOTLIB
-========================================
-
-Basic graph:
-
-plt.plot(df["Timestamp"], df["CPU"])
-
-Label X:
-plt.xlabel("Timestamp")
-
-Label Y:
-plt.ylabel("CPU Usage")
-
-Title:
-plt.title("CPU Usage Over Time")
-
-Display:
-plt.show()
-
-
-Complete basic graph:
-
-plt.plot(df["Timestamp"], df["CPU"], marker="o")
-plt.xlabel("Timestamp")
-plt.ylabel("CPU Usage")
-plt.title("CPU Usage Over Time")
-plt.show()
-
-
-========================================
-7. ANOMALY DETECTION
-========================================
-
-Basic threshold:
-
-if cpu > 80:
-    print("ANOMALY")
-
-Pandas threshold:
-
-anomalies = df[df["CPU"] > 80]
-
-Count:
-
-print("Anomalies detected:", len(anomalies))
-
-
-Counter:
-
-anomaly_count = 0
-
-if cpu > 80:
-    anomaly_count += 1
-
-
-Final count:
-
-print("Total anomalies detected:", anomaly_count)
-
-
-========================================
-8. PYTHON DICTIONARY
-========================================
+```bash
+git branch feature-name
+```
 
 Example:
 
-message = {
-    "server_id": "server01",
-    "cpu_usage": 85,
-    "memory_usage": 62
-}
+```bash
+git branch kafka-consumer
+```
 
-Access values:
+### Switch branch
 
-message["server_id"]
+```bash
+git checkout kafka-consumer
+```
 
-message["cpu_usage"]
+Modern Git also supports:
 
-message["memory_usage"]
+```bash
+git switch kafka-consumer
+```
 
+### Create AND switch
 
-========================================
-9. JSON
-========================================
+Very useful:
 
-Import:
-import json
+```bash
+git checkout -b kafka-consumer
+```
 
-Python dictionary → JSON:
+or:
 
-json.dumps(data)
+```bash
+git switch -c kafka-consumer
+```
 
-JSON → Python dictionary:
+### Merge
 
-json.loads(data)
+Suppose you're on `main` and want to merge `kafka-consumer`:
 
-Encode:
+```bash
+git switch main
+```
 
-data.encode("utf-8")
+then:
 
-Decode:
+```bash
+git merge kafka-consumer
+```
 
-data.decode("utf-8")
+---
 
+# 6. Pull Request
 
-Kafka producer commonly uses:
+You probably **won't create a Pull Request using a terminal command**.
 
-json.dumps(x).encode("utf-8")
+The normal process is:
 
+```text
+Create branch
+      ↓
+Make changes
+      ↓
+git add .
+      ↓
+git commit
+      ↓
+git push
+      ↓
+GitHub
+      ↓
+Create Pull Request
+```
 
-Kafka consumer commonly uses:
+On GitHub, you'll generally see:
 
-json.loads(value.decode("utf-8"))
+**Compare & pull request**
 
+or:
 
-========================================
-10. KAFKA — BASIC CONCEPT
-========================================
+**Pull requests → New pull request**
 
-Producer
-    ↓
-Kafka Broker
-    ↓
-Topic
-    ↓
-Consumer
+### Understand the difference
 
+```text
+Commit
+= save changes locally in Git history
 
-Producer
-= Sends messages.
+Push
+= upload your commits to GitHub
 
-Consumer
-= Receives messages.
+Pull
+= download latest changes from GitHub
 
-Broker
-= Kafka server.
+Branch
+= separate line of development
 
-Topic
-= Named channel/category for messages.
+Merge
+= combine branches
 
-Partition
-= Division of a topic.
+Pull Request
+= request to merge your branch into another branch
+```
 
-Cluster
-= Collection of Kafka brokers.
+---
 
-Consumer Group
-= Group of consumers working together.
+# 7. Python Commands You'll Actually Use in Q1
 
+The sample Q1 requires statistics, threshold anomaly detection, printing anomalies and graphs. :chatgpt-content-reference{index="3"}
 
-========================================
-11. KAFKA TOPIC — topic.py
-========================================
+Know these **Python statements**:
 
-Code:
+### Import Pandas
 
-from kafka.admin import KafkaAdminClient, NewTopic
+```python
+import pandas as pd
+```
 
-admin = KafkaAdminClient(
-    bootstrap_servers="localhost:9092"
-)
+### Import Matplotlib
 
-topic = NewTopic(
-    name="server_metrics",
-    num_partitions=1,
-    replication_factor=1
-)
+```python
+import matplotlib.pyplot as plt
+```
 
-admin.create_topics(new_topics=[topic])
+### DataFrame
 
-print("Topic created successfully!")
+```python
+df = pd.DataFrame(data)
+```
 
-admin.close()
+### Number of records
 
+```python
+len(df)
+```
 
-IMPORTANT:
+### Statistics
 
+```python
+df.describe()
+```
+
+### Average
+
+```python
+df["CPU"].mean()
+```
+
+### Maximum
+
+```python
+df["CPU"].max()
+```
+
+### Minimum
+
+```python
+df["CPU"].min()
+```
+
+### Filter anomaly
+
+```python
+anomalies = df[df["CPU"] > 80]
+```
+
+### Number of anomalies
+
+```python
+len(anomalies)
+```
+
+---
+
+# 8. Matplotlib Commands
+
+Know:
+
+```python
+plt.plot(...)
+```
+
+```python
+plt.xlabel("Timestamp")
+```
+
+```python
+plt.ylabel("CPU Usage")
+```
+
+```python
+plt.title("CPU Usage")
+```
+
+```python
+plt.show()
+```
+
+Basic pattern:
+
+```python
+plt.plot(df["Timestamp"], df["CPU"])
+plt.xlabel("Timestamp")
+plt.ylabel("CPU Usage")
+plt.title("CPU Usage Over Time")
+plt.show()
+```
+
+---
+
+# 🔴 9. Kafka Commands
+
+This part needs a distinction.
+
+Your **teacher's sample code is Python code**, not terminal commands.
+
+The important Python Kafka commands/functions are:
+
+### Topic
+
+```python
 KafkaAdminClient(...)
-= Connect to Kafka for administration.
+```
 
-bootstrap_servers="localhost:9092"
-= Kafka broker address.
-
+```python
 NewTopic(...)
-= Defines a new Kafka topic.
+```
 
-name="server_metrics"
-= Topic name.
-
-num_partitions=1
-= One partition.
-
-replication_factor=1
-= One replica.
-
+```python
 admin.create_topics(...)
-= Creates the topic.
+```
 
+```python
 admin.close()
-= Closes admin connection.
+```
 
+Your sample specifically requires the topic:
 
-========================================
-12. KAFKA PRODUCER — producer.py
-========================================
+```text
+server_metrics
+```
 
-Code:
+with one partition and replication factor 1. :chatgpt-content-reference{index="4"}
 
-from kafka import KafkaProducer
-import json
-import time
+---
 
-producer = KafkaProducer(
-    bootstrap_servers="localhost:9092",
-    value_serializer=lambda x: json.dumps(x).encode("utf-8")
-)
+# 10. Kafka Producer
 
-for i in range(10):
+Know:
 
-    message = {
-        "server_id": f"server{i+1}",
-        "cpu_usage": 50 + i * 4,
-        "memory_usage": 60 + i
-    }
-
-    producer.send(
-        "server_metrics",
-        value=message
-    )
-
-    print("Sent:", message)
-
-    time.sleep(1)
-
-producer.flush()
-producer.close()
-
-
-IMPORTANT:
-
+```python
 KafkaProducer(...)
-= Creates producer.
+```
 
-bootstrap_servers
-= Kafka broker location.
-
-value_serializer
-= Converts Python data into bytes/JSON.
-
-for i in range(10)
-= Send 10 messages.
-
-message
-= Server metric dictionary.
-
+```python
 producer.send(...)
-= Sends message to Kafka topic.
+```
 
-"server_metrics"
-= Topic name.
-
-value=message
-= Actual message being sent.
-
-time.sleep(1)
-= Wait one second.
-
+```python
 producer.flush()
-= Make sure pending messages are sent.
+```
 
+```python
 producer.close()
-= Close producer.
+```
 
+Your teacher's exact important pattern is:
 
-========================================
-13. KAFKA CONSUMER — consumer.py
-========================================
-
-Code:
-
-from kafka import KafkaConsumer
-import json
-
-consumer = KafkaConsumer(
+```python
+producer.send(
     "server_metrics",
-    bootstrap_servers="localhost:9092",
-    auto_offset_reset="earliest",
-    enable_auto_commit=True,
-    group_id="aiops-monitor",
-    value_deserializer=lambda value: json.loads(value.decode("utf-8"))
+    value=message
 )
+```
 
-print("Waiting for messages...")
+Meaning:
 
-for message in consumer:
+> Send `message` to the `server_metrics` topic.
 
-    data = message.value
+---
 
-    server = data["server_id"]
-    cpu = data["cpu_usage"]
-    memory = data["memory_usage"]
+# 11. Kafka Consumer
 
-    print("\nReceived:")
-    print("Server:", server)
-    print("CPU:", cpu, "%")
-    print("Memory:", memory, "%")
+Know:
 
-    if cpu > 80:
-        print("ALERT: High CPU detected on", server)
-
-
-IMPORTANT:
-
+```python
 KafkaConsumer(...)
-= Creates consumer.
+```
 
-"server_metrics"
-= Topic to consume from.
+Then:
 
-bootstrap_servers
-= Kafka broker address.
-
-auto_offset_reset="earliest"
-= Start from earliest available messages
-when appropriate.
-
-enable_auto_commit=True
-= Automatically commit consumer offsets.
-
-group_id="aiops-monitor"
-= Consumer group name.
-
-value_deserializer
-= Converts Kafka data back into Python data.
-
+```python
 for message in consumer:
-= Continuously receive messages.
+```
 
-message.value
-= Actual message data.
+Then:
 
-data["server_id"]
-= Get server ID.
+```python
+data = message.value
+```
 
-data["cpu_usage"]
-= Get CPU.
+Then:
 
-data["memory_usage"]
-= Get memory.
+```python
+server = data["server_id"]
+cpu = data["cpu_usage"]
+memory = data["memory_usage"]
+```
 
+Then:
 
-========================================
-14. KAFKA ANOMALY ALERT
-========================================
-
-Basic:
-
-if cpu > 80:
-    print("ALERT: High CPU detected")
-
-
-With server:
-
+```python
 if cpu > 80:
     print("ALERT: High CPU detected on", server)
+```
 
+This directly corresponds to the sample Q3. :chatgpt-content-reference{index="5"}
 
-With counter:
+---
 
-anomaly_count = 0
+# 12. Kafka JSON Commands
 
-if cpu > 80:
-    anomaly_count += 1
-    print("ALERT: High CPU detected")
+Know:
 
+```python
+import json
+```
 
-Final:
+Producer:
 
-print("Total anomalies detected:", anomaly_count)
+```python
+json.dumps(x)
+```
 
+Consumer:
 
-========================================
-15. AIRFLOW — BASIC CONCEPTS
-========================================
+```python
+json.loads(...)
+```
 
-Airflow
-= Workflow orchestration tool.
+Your teacher's producer uses:
 
-DAG
-= Directed Acyclic Graph.
+```python
+json.dumps(x).encode("utf-8")
+```
 
-Task
-= One unit of work.
+Consumer uses:
 
-PythonOperator
-= Runs a Python function as an Airflow task.
+```python
+json.loads(value.decode("utf-8"))
+```
 
-Dependency
-= Defines which task runs before another.
+You don't need to become a JSON expert. Just understand:
 
+```text
+Python dictionary
+      ↓
+json.dumps()
+      ↓
+JSON
+      ↓
+Kafka
+```
 
-Basic workflow:
+and reverse:
 
+```text
+Kafka
+ ↓
+JSON bytes
+ ↓
+decode()
+ ↓
+json.loads()
+ ↓
+Python dictionary
+```
+
+---
+
+# 13. Kafka Terminal Commands — Know Conceptually
+
+Depending on the exam environment, Kafka may provide commands such as:
+
+### Start Kafka
+
+```bash
+kafka-server-start.sh ...
+```
+
+### Create topic
+
+```bash
+kafka-topics.sh ...
+```
+
+### List topics
+
+```bash
+kafka-topics.sh --list ...
+```
+
+### Describe topic
+
+```bash
+kafka-topics.sh --describe ...
+```
+
+### Console producer
+
+```bash
+kafka-console-producer.sh ...
+```
+
+### Console consumer
+
+```bash
+kafka-console-consumer.sh ...
+```
+
+**But don't spend your time memorizing complicated flags.**
+
+Your provided sample specifically focuses on using **Python Kafka producer/consumer code**, and your teacher said no setup is needed. :chatgpt-content-reference{index="6"}
+
+---
+
+# 🔴 14. Airflow
+
+For Airflow, the most important things aren't terminal commands. They're the Python objects:
+
+```python
+DAG(...)
+```
+
+```python
+PythonOperator(...)
+```
+
+and:
+
+```python
+task1 >> task2
+```
+
+Your sample requires four tasks:
+
+```text
 collect_metrics
-       ↓
+        ↓
 process_metrics
-       ↓
+        ↓
 detect_anomaly
-       ↓
+        ↓
 generate_report
+```
 
+:chatgpt-content-reference{index="7"}
 
-Dependency syntax:
+---
 
-collect_task >> process_task
+# 15. Airflow Terminal Commands
 
-Complete:
+Know these basic commands conceptually:
 
-collect_task >> process_task >> detect_task >> report_task
+### Check Airflow
 
+```bash
+airflow version
+```
 
-========================================
-16. AIRFLOW PYTHONOPERATOR
-========================================
+### List DAGs
 
-Import:
+```bash
+airflow dags list
+```
 
+### Check a DAG
+
+```bash
+airflow dags list
+```
+
+### Test a task
+
+Depending on the Airflow version/environment, task-testing commands can differ, so **don't memorize random commands from older tutorials**.
+
+Your exam sample primarily tests the DAG code, `PythonOperator`, and dependencies. :chatgpt-content-reference{index="8"}
+
+---
+
+# 16. Airflow Code You MUST Know
+
+### DAG
+
+```python
+from airflow import DAG
+```
+
+### PythonOperator
+
+```python
 from airflow.operators.python import PythonOperator
+```
 
-Function:
+### Function
 
+```python
 def collect_metrics():
     print("Collecting metrics")
+```
 
-Task:
+### Task
 
+```python
 collect_task = PythonOperator(
     task_id="collect_metrics",
     python_callable=collect_metrics
 )
+```
 
+### Dependency
 
-IMPORTANT:
+```python
+collect_task >> process_task
+```
 
-task_id
-= Unique task name.
+### Full chain
 
-python_callable
-= Python function that the task runs.
+```python
+collect_task >> process_task >> detect_task >> report_task
+```
 
+---
 
-========================================
-17. AIRFLOW BASIC DAG
-========================================
+# 🔴 17. The AIOps Logic
 
-Basic structure:
+These aren't terminal commands, but **memorize these patterns**.
 
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime
+### Threshold
 
+```python
+if cpu > 80:
+```
 
-def collect_metrics():
-    print("Collecting metrics")
+### Alert
 
+```python
+print("ALERT: High CPU detected")
+```
 
-def process_metrics():
-    print("Processing metrics")
+### Counter
 
+```python
+anomaly_count = 0
+```
 
-def detect_anomaly():
-    print("Detecting anomaly")
+Then:
 
+```python
+anomaly_count += 1
+```
 
-def generate_report():
-    print("Generating report")
+Then:
 
+```python
+print("Total anomalies detected:", anomaly_count)
+```
 
-with DAG(
-    dag_id="aiops_workflow",
-    start_date=datetime(2026, 1, 1),
-    schedule=None,
-    catchup=False
-) as dag:
+This is exactly what the integrated sample question asks you to implement. :chatgpt-content-reference{index="9"}
 
-    collect_task = PythonOperator(
-        task_id="collect_metrics",
-        python_callable=collect_metrics
-    )
+---
 
-    process_task = PythonOperator(
-        task_id="process_metrics",
-        python_callable=process_metrics
-    )
+# ⭐ Your Ultimate Cheat Sheet
 
-    detect_task = PythonOperator(
-        task_id="detect_anomaly",
-        python_callable=detect_anomaly
-    )
+If you have only **15 minutes before the exam**, revise this:
 
-    report_task = PythonOperator(
-        task_id="generate_report",
-        python_callable=generate_report
-    )
+### Environment
 
-    collect_task >> process_task >> detect_task >> report_task
-
-
-========================================
-18. AIRFLOW COMMANDS
-========================================
-
-Check Airflow:
-
-airflow version
-
-List DAGs:
-
-airflow dags list
-
-
-IMPORTANT:
-The exact Airflow CLI commands available can depend
-on the Airflow version/environment.
-
-For the exam, focus mainly on:
-
-DAG
-PythonOperator
-tasks
-dependencies
-Python functions
-
-
-========================================
-19. KAFKA TERMINAL COMMANDS
-========================================
-
-Know these names/concepts:
-
-kafka-server-start.sh
-kafka-topics.sh
-kafka-console-producer.sh
-kafka-console-consumer.sh
-
-
-Possible operations:
-
-Start Kafka:
-kafka-server-start.sh ...
-
-Create topic:
-kafka-topics.sh ...
-
-List topics:
-kafka-topics.sh --list ...
-
-Describe topic:
-kafka-topics.sh --describe ...
-
-
-IMPORTANT:
-Do not focus heavily on Kafka installation/setup because
-the teacher said setup is not required for the exam.
-
-
-========================================
-20. COMMON ERRORS
-========================================
-
-ModuleNotFoundError
-→ Required Python package is missing.
-
-Fix example:
-python -m pip install pandas
-
-SyntaxError
-→ Python syntax is incorrect.
-
-NameError
-→ Variable/function name is wrong or not defined.
-
-KeyError
-→ Dictionary key does not exist.
-
-Connection refused
-→ Program cannot connect to Kafka broker.
-
-Wrong topic name
-→ Producer and consumer must use the correct topic.
-
-Git merge conflict
-→ Git cannot automatically combine changes.
-
-
-========================================
-21. EXAM QUESTION → WHAT TO USE
-========================================
-
-Dataset + CPU + Memory + Graph
-→ Pandas + Matplotlib
-
-Statistics
-→ df.describe()
-
-Average
-→ df["CPU"].mean()
-
-Anomaly
-→ df[df["CPU"] > 80]
-
-Kafka topic
-→ KafkaAdminClient + NewTopic
-
-Kafka producer
-→ KafkaProducer + producer.send()
-
-Kafka consumer
-→ KafkaConsumer + for message in consumer
-
-CPU alert
-→ if cpu > 80
-
-Anomaly count
-→ anomaly_count += 1
-
-Airflow workflow
-→ DAG + PythonOperator
-
-Task dependency
-→ task1 >> task2
-
-Git submission
-→ git add → git commit → git push
-
-
-========================================
-22. FINAL EXAM WORKFLOW
-========================================
-
-FOR EVERY QUESTION:
-
-1. Read the question carefully.
-
-2. Identify the topic:
-
-Python?
-Kafka?
-Airflow?
-Git?
-
-3. Create/open required file.
-
-4. Write code.
-
-5. Run/test code.
-
-6. Fix errors.
-
-7. Check:
-
-git status
-
-8. Add:
-
-git add .
-
-9. Commit:
-
-git commit -m "Complete task"
-
-10. Push:
-
-git push
-
-
-========================================
-23. MOST IMPORTANT THINGS TO MEMORIZE
-========================================
-
-1.
-
+```bash
 python --version
-
-
-2.
-
-source .venv/bin/activate
-
-
-3.
-
 python -m pip install package
+source .venv/bin/activate
+python file.py
+```
 
+### Files
 
-4.
+```bash
+pwd
+ls
+cd folder
+cd ..
+touch file.py
+mkdir folder
+```
 
-python filename.py
+### Git
 
-
-5.
-
+```bash
 git status
-
-
-6.
-
 git add .
-
-
-7.
-
 git commit -m "message"
-
-
-8.
-
 git push
+git pull
+git branch
+git switch branch
+git merge branch
+```
 
+### Python
 
-9.
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(data)
+
+df.describe()
+
+df["CPU"].mean()
+df["CPU"].max()
+df["CPU"].min()
 
 anomalies = df[df["CPU"] > 80]
 
+plt.plot(...)
+plt.show()
+```
 
-10.
+### Kafka
 
-producer.send("server_metrics", value=message)
+```python
+KafkaAdminClient(...)
+NewTopic(...)
+admin.create_topics(...)
+```
 
+```python
+KafkaProducer(...)
+producer.send(...)
+producer.flush()
+producer.close()
+```
 
-11.
+```python
+KafkaConsumer(...)
 
 for message in consumer:
     data = message.value
+```
 
+```python
+json.dumps(...)
+json.loads(...)
+```
 
-12.
+### AIOps
 
+```python
+if cpu > 80:
+    print("ALERT")
+```
+
+```python
+anomaly_count += 1
+```
+
+### Airflow
+
+```python
+DAG(...)
+PythonOperator(...)
+```
+
+```python
+task1 >> task2 >> task3 >> task4
+```
+
+---
+
+## 🔥 The 10 things I would absolutely memorize tonight
+
+If you're tired and need to prioritize:
+
+**1.**
+
+```bash
+source .venv/bin/activate
+```
+
+**2.**
+
+```bash
+python -m pip install package
+```
+
+**3.**
+
+```bash
+python filename.py
+```
+
+**4.**
+
+```bash
+git add .
+git commit -m "message"
+git push
+```
+
+**5.**
+
+```python
+anomalies = df[df["CPU"] > 80]
+```
+
+**6.**
+
+```python
+producer.send("server_metrics", value=message)
+```
+
+**7.**
+
+```python
+for message in consumer:
+    data = message.value
+```
+
+**8.**
+
+```python
 if cpu > 80:
     print("ALERT: High CPU detected")
+```
 
+**9.**
 
-13.
-
+```python
 anomaly_count += 1
+```
 
+**10.**
 
-14.
+```python
+collect_task >> process_task >> detect_task >> report_task
+```
 
-PythonOperator(...)
-
-
-15.
-
-task1 >> task2 >> task3 >> task4
+If you know those **10 patterns + the meaning behind them**, you have the core practical mechanics represented by your sample paper.
 
 ## 🔥 Git Commands You Actually Need for the Exam
 
@@ -1097,134 +1185,4 @@ git branch
 git switch main
 git switch -c branch-name
 git merge branch-name
-```## 🔥 Git Commands You Actually Need for the Exam
-
-### 1. Check current status
-```bash
-git status
 ```
-
-### 2. Add changes
-```bash
-git add .
-```
-Or specific file:
-```bash
-git add filename.py
-```
-
-### 3. Commit changes
-```bash
-git commit -m "Complete task"
-```
-
-### 4. Push to GitHub
-```bash
-git push
-```
-
-### 5. Pull latest changes
-```bash
-git pull
-```
-
-### 6. See commit history
-```bash
-git log --oneline
-```
-
----
-
-## 🌿 Branch Commands
-
-### See branches
-```bash
-git branch
-```
-
-### Create + switch to new branch
-```bash
-git switch -c feature-name
-```
-
-### Switch branch
-```bash
-git switch main
-```
-
-### Merge a branch
-First go to the branch receiving changes:
-```bash
-git switch main
-```
-
-Then:
-```bash
-git merge feature-name
-```
-
-### Delete branch
-```bash
-git branch -d feature-name
-```
-
----
-
-## 🔄 Most Important Exam Workflow
-
-After completing **every task**:
-
-```bash
-git status
-git add .
-git commit -m "Complete Q1"
-git push
-```
-
-Then start the next task.
-
-### Example
-
-```bash
-# Finish Q1
-git add q1_anomaly.py
-git commit -m "Complete Q1 anomaly detection"
-git push
-
-# Work on Q2
-git add topic.py producer.py
-git commit -m "Add Kafka topic and producer"
-git push
-```
-
-### 🧠 Remember this sequence
-
-**ADD → COMMIT → PUSH**
-
-```text
-git add .
-     ↓
-git commit -m "message"
-     ↓
-git push
-```
-
-For your exam, these are the **most important 10**:
-
-```bash
-git status
-git add .
-git add filename.py
-git commit -m "message"
-git push
-git pull
-git branch
-git switch main
-git switch -c branch-name
-git merge branch-name
-```
-
-
-========================================
-END OF CHEAT SHEET
-========================================
